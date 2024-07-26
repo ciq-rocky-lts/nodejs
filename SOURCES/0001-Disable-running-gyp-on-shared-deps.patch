@@ -1,4 +1,4 @@
-From 39f761838b5fc10af995642bd44e6bb4c79085f1 Mon Sep 17 00:00:00 2001
+From 6c80c1956373978489a297a630f4f50222c47775 Mon Sep 17 00:00:00 2001
 From: rpm-build <rpm-build>
 Date: Tue, 30 May 2023 13:12:35 +0200
 Subject: [PATCH] Disable running gyp on shared deps
@@ -22,5 +22,5 @@ index ef3eda2..8b52a4f 100644
  	tools/v8_gypfiles/inspector.gypi tools/v8_gypfiles/v8.gyp
  	$(PYTHON) tools/gyp_node.py -f make
 -- 
-2.41.0
+2.44.0
 

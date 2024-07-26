@@ -30,7 +30,7 @@
 # This is used by both the nodejs package and the npm subpackage that
 # has a separate version - the name is special so that rpmdev-bumpspec
 # will bump this rather than adding .1 to the end.
-%global baserelease 4
+%global baserelease 8
 
 %{?!_pkgdocdir:%global _pkgdocdir %{_docdir}/%{name}-%{version}}
 
@@ -184,7 +184,19 @@ Source112: https://github.com/WebAssembly/wasi-sdk/archive/wasi-sdk-14/wasi-sdk-
 Patch1: 0001-Disable-running-gyp-on-shared-deps.patch
 Patch2: 0002-disable-fips-options.patch
 Patch3: 0003-deps-nghttp2-update-to-1.57.0.patch
-Patch4: nodejs-CVE-2024-22019.patch
+Patch4: 0004-Fix-CVE-2024-22019.patch
+# CVE-2025-27983
+Patch5: 0005-src-ensure-to-close-stream-when-destroying-session.patch
+# CVE-2024-28182
+Patch6: 0006-Limit-CONTINUATION-frames-following-an-incoming-HEAD.patch
+# CVE-2024-28182
+Patch7: 0007-Add-nghttp2_option_set_max_continuations.patch
+# CVE-2024-22025
+Patch8: 0008-zlib-pause-stream-if-outgoing-buffer-is-full.patch
+# CVE-2024-25629
+Patch9: 0009-Address-CVE-2024-25629.patch
+# CVE-2024-27982
+Patch10: 0010-http-do-not-allow-OBS-fold-in-headers-by-default.patch
 
 BuildRequires: make
 BuildRequires: python3-devel
@@ -476,6 +488,7 @@ export LDFLAGS="%{build_ldflags}"
            --with-intl=small-icu \
            --with-icu-default-data-dir=%{icudatadir} \
            --without-corepack \
+           --openssl-conf-name=openssl_conf \
            --openssl-use-def-ca-store \
            --openssl-default-cipher-list=PROFILE=SYSTEM
 
@@ -724,6 +737,19 @@ end
 
 
 %changelog
+* Tue May 07 2024 Jan Staněk <jstanek@redhat.com> - 1:16.20.2-8
+- Actually apply the patch for CVE-2024-27982
+
+* Wed Apr 24 2024 Jan Staněk <jstanek@redhat.com> - 1:16.20.2-7
+- Backport patch for CVE-2024-27982
+
+* Tue Apr 09 2024 Jan Staněk <jstanek@redhat.com> - 1:16.20.2-6
+- Use system OpenSSL configuration section
+
+* Mon Apr 08 2024 Jan Staněk <jstanek@redhat.com> - 1:16.20.2-5
+- Backport patches for several CVEs.
+  Fixes CVE-2024-22025 CVE-2024-25629 CVE-2024-27983 CVE-2024-28182
+
 * Tue Mar 05 2024 Honza Horak <hhorak@redhat.com> - 1:16.20.2-4
 - Fix CVE-2024-22019
 

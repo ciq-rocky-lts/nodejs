@@ -1,4 +1,4 @@
-From 3cdb8a61ff25e4d299d9d47284da5134bc5f1072 Mon Sep 17 00:00:00 2001
+From de21a714db98bade7a0438af0a0351a9f53f2fb8 Mon Sep 17 00:00:00 2001
 From: rpm-build <rpm-build>
 Date: Thu, 12 Oct 2023 14:18:12 +0200
 Subject: [PATCH] deps(nghttp2): update to 1.57.0
@@ -5798,5 +5798,5 @@ index 0dcd034..7b02f39 100644
      }
    ]
 -- 
-2.41.0
+2.44.0
 

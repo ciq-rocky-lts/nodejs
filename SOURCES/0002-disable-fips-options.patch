@@ -1,4 +1,4 @@
-From b9370dcfba759c63e894f12abcf49699f1e8f0dc Mon Sep 17 00:00:00 2001
+From b7d979b5f7d28114050d1cdc43f39e6e83bd80d5 Mon Sep 17 00:00:00 2001
 From: Honza Horak <hhorak@redhat.com>
 Date: Thu, 12 Oct 2023 13:52:59 +0200
 Subject: [PATCH] disable fips options
@@ -22,5 +22,5 @@ index 59ae7f8..7343396 100644
      OSSL_PROVIDER* fips_provider = OSSL_PROVIDER_load(nullptr, "fips");
      if (fips_provider == nullptr)
 -- 
-2.41.0
+2.44.0
 
